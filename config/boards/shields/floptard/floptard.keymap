@@ -4,7 +4,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
-#include "./bluetooth_profiles.dtsi"
+// #include "./bluetooth_profiles.dtsi"
 
 #define L_MAIN 0
 #define L_GAME 1
@@ -25,7 +25,18 @@
 #define HRM(MOD) &ht_mod MOD 0
 #define KRC(row, col) (((row) * 12) + (col))
 
-#define BTP_SEL(PROF) &bt BT_SEL PROF
+#define BTP_SEL(PROF1, PROF2)\
+		bt_switch_##PROF1: hold-tap {\
+			compatible = "zmk,behavior-hold-tap";\
+			#binding-cells = <2>;\
+			flavor = "tap-preferred";\
+\
+			tapping-term-ms = <DEFAULT_TAPTERM_MS>;\
+			quick-tap-ms = <200>;\
+			require-prior-idle-ms = <125>;\
+			bindings = <&bt BT_SEL PROF1>, <&bt BT_SEL PROF2>;\
+		};
+
 #define CAREFUL_KEY(BINDING)\
 			compatible = "zmk,behavior-hold-tap";\
 			#binding-cells = <2>;\
@@ -85,6 +96,22 @@
 	};
 
 	behaviors {
+		BTP_SEL(0,5);
+		BTP_SEL(1,6);
+		BTP_SEL(2,7);
+		BTP_SEL(3,8);
+
+		bt_switch_or_clr: hold-tap {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			flavor = "tap-preferred";
+
+			tapping-term-ms = <DEFAULT_TAPTERM_MS>;
+			quick-tap-ms = <200>;
+			require-prior-idle-ms = <125>;
+
+			bindings = <&bt BT_SEL 4>, <&bt BT_CLR>;
+		};
 		td_rs: tap_dance_rshift_rctrl {
 			compatible = "zmk,behavior-tap-dance";
 			#binding-cells = <0>;
@@ -207,7 +234,7 @@
 				&kp ESC	&kp F1			&kp F2			&kp F3			&kp F4			&kp F5				/*║*/	&kp F6		&kp F7		&kp F8		&kp F9		&kp F10		&kp DEL
 				&trans	&soft_off		&c_lboot 0 0	&out OUT_USB	&out OUT_BLE	&none				/*║*/	&kp MINUS	&kp EQUAL	&kp LBKT	&kp RBKT	&kp F11		&none
 				&trans	&kp C_VOL_DN	&kp C_VOL_UP	&kp C_PREV		&kp C_PP		&kp C_NEXT			/*║*/	&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT	&kp F12		&kp SQT
-				&trans	&bt_switch_0	&bt_switch_2	&bt_switch_4	&bt_switch_6	&bt_switch_or_clr_8	/*║*/	&kp HOME	&kp PG_DN	&kp PG_UP	&kp END		&kp PSCRN	&trans
+				&trans	&bt_switch_0	&bt_switch_1	&bt_switch_2	&bt_switch_3	&bt_switch_or_clr	/*║*/	&kp HOME	&kp PG_DN	&kp PG_UP	&kp END		&kp PSCRN	&trans
 										&trans			&trans			&trans			&trans				/*║*/	&trans		&trans		&trans		&trans
 			>;
 		};
