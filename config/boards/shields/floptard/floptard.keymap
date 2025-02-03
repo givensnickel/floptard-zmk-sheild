@@ -96,10 +96,56 @@
 	};
 
 	behaviors {
-		BTP_SEL(0,5);
-		BTP_SEL(1,6);
-		BTP_SEL(2,7);
-		BTP_SEL(3,8);
+		bt_switch_0: hold-tap {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			flavor = "tap-preferred";
+
+			tapping-term-ms = <DEFAULT_TAPTERM_MS>;
+			quick-tap-ms = <200>;
+			require-prior-idle-ms = <125>;
+			bindings = <&bt BT_SEL 0>, <&bt BT_SEL 5>;
+		};
+		bt_switch_1: hold-tap {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			flavor = "tap-preferred";
+
+			tapping-term-ms = <DEFAULT_TAPTERM_MS>;
+			quick-tap-ms = <200>;
+			require-prior-idle-ms = <125>;
+			bindings = <&bt BT_SEL 1>, <&bt BT_SEL 6>;
+		};
+		bt_switch_2: hold-tap {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			flavor = "tap-preferred";
+
+			tapping-term-ms = <DEFAULT_TAPTERM_MS>;
+			quick-tap-ms = <200>;
+			require-prior-idle-ms = <125>;
+			bindings = <&bt BT_SEL 2>, <&bt BT_SEL 7>;
+		};
+		bt_switch_3: hold-tap {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			flavor = "tap-preferred";
+
+			tapping-term-ms = <DEFAULT_TAPTERM_MS>;
+			quick-tap-ms = <200>;
+			require-prior-idle-ms = <125>;
+			bindings = <&bt BT_SEL 3>, <&bt BT_SEL 8>;
+		};
+		bt_switch_4: hold-tap {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			flavor = "tap-preferred";
+
+			tapping-term-ms = <DEFAULT_TAPTERM_MS>;
+			quick-tap-ms = <200>;
+			require-prior-idle-ms = <125>;
+			bindings = <&bt BT_SEL 3>, <&bt BT_CLR>;
+		};
 
 		bt_switch_or_clr: hold-tap {
 			compatible = "zmk,behavior-hold-tap";
@@ -231,11 +277,11 @@
 			//               |  [^]  |  [^]  |  [^]  | [^] | ║ | [^]  | [^]  | [^]  | [^]  |
  
 			bindings = <
-				&kp ESC	&kp F1			&kp F2			&kp F3			&kp F4			&kp F5				/*║*/	&kp F6		&kp F7		&kp F8		&kp F9		&kp F10		&kp DEL
-				&trans	&soft_off		&c_lboot 0 0	&out OUT_USB	&out OUT_BLE	&none				/*║*/	&kp MINUS	&kp EQUAL	&kp LBKT	&kp RBKT	&kp F11		&none
-				&trans	&kp C_VOL_DN	&kp C_VOL_UP	&kp C_PREV		&kp C_PP		&kp C_NEXT			/*║*/	&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT	&kp F12		&kp SQT
-				&trans	&bt_switch_0	&bt_switch_1	&bt_switch_2	&bt_switch_3	&bt_switch_or_clr	/*║*/	&kp HOME	&kp PG_DN	&kp PG_UP	&kp END		&kp PSCRN	&trans
-										&trans			&trans			&trans			&trans				/*║*/	&trans		&trans		&trans		&trans
+				&kp ESC	&kp F1			&kp F2			&kp F3			&kp F4			&kp F5			/*║*/	&kp F6		&kp F7		&kp F8		&kp F9		&kp F10		&kp DEL
+				&trans	&soft_off		&c_lboot 0 0	&out OUT_USB	&out OUT_BLE	&none			/*║*/	&kp MINUS	&kp EQUAL	&kp LBKT	&kp RBKT	&kp F11		&none
+				&trans	&kp C_VOL_DN	&kp C_VOL_UP	&kp C_PREV		&kp C_PP		&kp C_NEXT		/*║*/	&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT	&kp F12		&kp SQT
+				&trans	&bt_switch_0	&bt_switch_1	&bt_switch_2	&bt_switch_3	&bt_switch_4	/*║*/	&kp HOME	&kp PG_DN	&kp PG_UP	&kp END		&kp PSCRN	&trans
+										&trans			&trans			&trans			&trans			/*║*/	&trans		&trans		&trans		&trans
 			>;
 		};
 	};
