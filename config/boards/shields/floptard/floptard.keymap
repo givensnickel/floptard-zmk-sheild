@@ -4,6 +4,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+#include "./bluetooth_profile.dtsi"
 
 #define L_MAIN 0
 #define L_GAME 1
@@ -203,11 +204,11 @@
 			//               |  [^]  |  [^]  |  [^]  | [^] | ║ | [^]  | [^]  | [^]  | [^]  |
  
 			bindings = <
-				&kp ESC	&kp F1			&kp F2			&kp F3			&kp F4			&kp F5		/*║*/	&kp F6		&kp F7		&kp F8		&kp F9		&kp F10		&kp DEL
-				&trans	&soft_off		&c_lboot 0 0	&out OUT_USB	&out OUT_BLE	&none		/*║*/	&kp MINUS	&kp EQUAL	&kp LBKT	&kp RBKT	&kp F11		&none
-				&trans	&kp C_VOL_DN	&kp C_VOL_UP	&kp C_PREV		&kp C_PP		&kp C_NEXT	/*║*/	&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT	&kp F12		&kp SQT
-				&trans	BTP_SEL(0)		BTP_SEL(1)		BTP_SEL(2)		BTP_SEL(3)		BTP_SEL(4)	/*║*/	&kp HOME	&kp PG_DN	&kp PG_UP	&kp END		&kp PSCRN	&trans
-										&trans			&trans			&trans			&trans		/*║*/	&trans		&trans		&trans		&trans
+				&kp ESC	&kp F1			&kp F2			&kp F3			&kp F4			&kp F5				/*║*/	&kp F6		&kp F7		&kp F8		&kp F9		&kp F10		&kp DEL
+				&trans	&soft_off		&c_lboot 0 0	&out OUT_USB	&out OUT_BLE	&none				/*║*/	&kp MINUS	&kp EQUAL	&kp LBKT	&kp RBKT	&kp F11		&none
+				&trans	&kp C_VOL_DN	&kp C_VOL_UP	&kp C_PREV		&kp C_PP		&kp C_NEXT			/*║*/	&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT	&kp F12		&kp SQT
+				&trans	&bt_switch_0	&bt_switch_2	&bt_switch_4	&bt_switch_6	&bt_switch_or_clr_8	/*║*/	&kp HOME	&kp PG_DN	&kp PG_UP	&kp END		&kp PSCRN	&trans
+										&trans			&trans			&trans			&trans				/*║*/	&trans		&trans		&trans		&trans
 			>;
 		};
 	};

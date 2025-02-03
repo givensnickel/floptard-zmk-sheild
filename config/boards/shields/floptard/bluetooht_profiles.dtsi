@@ -1,0 +1,29 @@
+#include <dt-bindings/zmk/bt.h>
+
+template <int PROFILE_PAIR> {
+    bt_switch_${PROFILE_PAIR}: hold-tap {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        flavor = "tap-preferred";
+
+        tapping-term-ms = <300>;
+        quick-tap-ms = <200>;
+        require-prior-idle-ms = <125>;
+
+        bindings = <&bt BT_SEL ${PROFILE_PAIR}>, <&bt BT_SEL $((PROFILE_PAIR + 1))>;
+    };
+};
+
+template <int PROFILE> {
+    bt_switch_or_clr_${PROFILE}: hold-tap {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        flavor = "tap-preferred";
+
+        tapping-term-ms = <300>;
+        quick-tap-ms = <200>;
+        require-prior-idle-ms = <125>;
+
+        bindings = <&bt BT_SEL ${PROFILE_PAIR}>, <&bt BT_CLR>;
+    };
+};
