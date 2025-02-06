@@ -29,7 +29,7 @@
 	btp_##profile_num: bt_profile_selector_impl_##profile_num { \
 		compatible = "zmk,bt-select-profile"; \
 		profile-number = <profile_num>; \
-	}
+	};\
 
 #define BTP_SEL(PROF1, PROF2)\
 		bt_sel_##PROF1: bt_prof_select_##PROF1 {\
@@ -112,7 +112,7 @@
 		BT_PROFILE_SELECTOR(7);
 		BT_PROFILE_SELECTOR(8);
 
-		bt_sel_0: bt_prof_select_0 {
+		bt_sel_0 : bt_prof_select_0 {
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
 			flavor = "tap-preferred";
