@@ -32,7 +32,7 @@
 	}
 
 #define BTP_SEL(PROF1, PROF2)\
-		bt_sel_##PROF1 : bt_prof_select_##PROF1 {\
+		bt_sel_##PROF1: bt_prof_select_##PROF1 {\
 			compatible = "zmk,behavior-hold-tap";\
 			#binding-cells = <2>;\
 			flavor = "tap-preferred";\
@@ -41,7 +41,7 @@
 			quick-tap-ms = <200>;\
 			require-prior-idle-ms = <125>;\
 			bindings = <&btp_##PROF1>, <&btp_##PROF2>;\
-		};
+		};\
 
 #define CAREFUL_KEY(BINDING)\
 			compatible = "zmk,behavior-hold-tap";\
