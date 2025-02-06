@@ -26,13 +26,13 @@
 #define KRC(row, col) (((row) * 12) + (col))
 
 #define BT_PROFILE_SELECTOR(profile_num) \
-	btp_##profile_num : bt_profile_selector_impl_##profile_num { \
+	btp_##profile_num##: bt_profile_selector_impl_##profile_num { \
 		compatible = "zmk,bt-select-profile"; \
 		profile-number = <profile_num>; \
 	};\
 
 #define BTP_SEL(PROF1, PROF2)\
-		bt_sel_##PROF1: bt_prof_select_##PROF1 {\
+		bt_sel_##PROF1##: bt_prof_select_##PROF1 {\
 			compatible = "zmk,behavior-hold-tap";\
 			#binding-cells = <2>;\
 			flavor = "tap-preferred";\
@@ -126,20 +126,20 @@
 
 
 		// BT_PROFILE_SELECTOR(0);
-		// BT_PROFILE_SELECTOR(1);
-		// BT_PROFILE_SELECTOR(2);
-		// BT_PROFILE_SELECTOR(3);
-		// BT_PROFILE_SELECTOR(4);
+		BT_PROFILE_SELECTOR(1);
+		BT_PROFILE_SELECTOR(2);
+		BT_PROFILE_SELECTOR(3);
+		BT_PROFILE_SELECTOR(4);
 		// BT_PROFILE_SELECTOR(5);
-		// BT_PROFILE_SELECTOR(6);
-		// BT_PROFILE_SELECTOR(7);
-		// BT_PROFILE_SELECTOR(8);
-		//
-		//
-		//
-		// BTP_SEL(1,6);
-		// BTP_SEL(2,7);
-		// BTP_SEL(3,8);
+		BT_PROFILE_SELECTOR(6);
+		BT_PROFILE_SELECTOR(7);
+		BT_PROFILE_SELECTOR(8);
+
+
+
+		BTP_SEL(1,6);
+		BTP_SEL(2,7);
+		BTP_SEL(3,8);
 
 		bt_switch_4: long_name3 {
 			compatible = "zmk,behavior-hold-tap";
