@@ -99,7 +99,9 @@
 			#binding-cells = <0>;
 			bindings = <&bt BT_CLR>;
 		};
+	};
 
+	behaviors {
 		BT_PROFILE_SELECTOR(0);
 		BT_PROFILE_SELECTOR(1);
 		BT_PROFILE_SELECTOR(2);
@@ -109,9 +111,7 @@
 		BT_PROFILE_SELECTOR(6);
 		BT_PROFILE_SELECTOR(7);
 		BT_PROFILE_SELECTOR(8);
-	};
 
-	behaviors {
 		bt_sel_0: bt_prof_select_0 {
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
