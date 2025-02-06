@@ -102,7 +102,7 @@
 	};
 
 	behaviors {
-		bt_sel_0 : bt_prof_select_0 {
+		bt_sel_0: bt_prof_select_0 {
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
 			flavor = "tap-preferred";
@@ -113,12 +113,12 @@
 			bindings = <&btp_0>, <&btp_5>;
 		};
 
-		btp_0 : bt_profile_selector_impl_0 { 
+		btp_0: bt_profile_selector_impl_0 { 
 			compatible = "zmk,bt-select-profile"; 
 			profile-number = <0>; 
 		};
 
-		btp_5 : bt_profile_selector_impl_5 { 
+		btp_5: bt_profile_selector_impl_5 { 
 			compatible = "zmk,bt-select-profile"; 
 			profile-number = <5>; 
 		};
