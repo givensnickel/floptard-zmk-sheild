@@ -122,7 +122,11 @@
 			require-prior-idle-ms = <125>;
 			bindings = <&btp_0>, <&btp_5>;
 		};
-		// BTP_SEL(0,5);
+
+
+
+
+
 		BTP_SEL(1,6);
 		BTP_SEL(2,7);
 		BTP_SEL(3,8);
