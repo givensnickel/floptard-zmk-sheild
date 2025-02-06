@@ -26,7 +26,7 @@
 #define KRC(row, col) (((row) * 12) + (col))
 
 #define BT_PROFILE_SELECTOR(profile_num) \
-	btp_##profile_num: bt_profile_selector_impl_##profile_num { \
+	btp_##profile_num : bt_profile_selector_impl_##profile_num { \
 		compatible = "zmk,bt-select-profile"; \
 		profile-number = <profile_num>; \
 	};\
