@@ -25,8 +25,14 @@
 #define HRM(MOD) &ht_mod MOD 0
 #define KRC(row, col) (((row) * 12) + (col))
 
+#define BT_PROFILE_SELECTOR(profile_num) \
+	btp_##profile_num: bt_profile_selector_impl_##profile_num { \
+		compatible = "zmk,bt-select-profile"; \
+		profile-number = <profile_num>; \
+	}
+
 #define BTP_SEL(PROF1, PROF2)\
-		bt_switch_##PROF1: hold-tap {\
+		bt_sel_##PROF1: bt_prof_select_##PROF1 {\
 			compatible = "zmk,behavior-hold-tap";\
 			#binding-cells = <2>;\
 			flavor = "tap-preferred";\
@@ -34,7 +40,7 @@
 			tapping-term-ms = <DEFAULT_TAPTERM_MS>;\
 			quick-tap-ms = <200>;\
 			require-prior-idle-ms = <125>;\
-			bindings = <&bt BT_SEL PROF1>, <&bt BT_SEL PROF2>;\
+			bindings = <&btp_##PROF1>, <&btp_##PROF2>;\
 		};
 
 #define CAREFUL_KEY(BINDING)\
@@ -93,49 +99,24 @@
 			#binding-cells = <0>;
 			bindings = <&bt BT_CLR>;
 		};
+
+		BT_PROFILE_SELECTOR(0);
+		BT_PROFILE_SELECTOR(1);
+		BT_PROFILE_SELECTOR(2);
+		BT_PROFILE_SELECTOR(3);
+		BT_PROFILE_SELECTOR(4);
+		BT_PROFILE_SELECTOR(5);
+		BT_PROFILE_SELECTOR(6);
+		BT_PROFILE_SELECTOR(7);
+		BT_PROFILE_SELECTOR(8);
 	};
 
 	behaviors {
-		bt_switch_0: hold-tap0 {
-			compatible = "zmk,behavior-hold-tap";
-			#binding-cells = <2>;
-			flavor = "tap-preferred";
+		BTP_SEL(0,5);
+		BTP_SEL(1,6);
+		BTP_SEL(2,7);
+		BTP_SEL(3,8);
 
-			tapping-term-ms = <DEFAULT_TAPTERM_MS>;
-			quick-tap-ms = <200>;
-			require-prior-idle-ms = <125>;
-			bindings = <&bt BT_SEL 0>, <&bt BT_SEL 5>;
-		};
-		bt_switch_1: hold-tap1 {
-			compatible = "zmk,behavior-hold-tap";
-			#binding-cells = <2>;
-			flavor = "tap-preferred";
-
-			tapping-term-ms = <DEFAULT_TAPTERM_MS>;
-			quick-tap-ms = <200>;
-			require-prior-idle-ms = <125>;
-			bindings = <&bt BT_SEL 1>, <&bt BT_SEL 6>;
-		};
-		bt_switch_2: hold-tapbt3 {
-			compatible = "zmk,behavior-hold-tap";
-			#binding-cells = <2>;
-			flavor = "tap-preferred";
-
-			tapping-term-ms = <DEFAULT_TAPTERM_MS>;
-			quick-tap-ms = <200>;
-			require-prior-idle-ms = <125>;
-			bindings = <&bt BT_SEL 2>, <&bt BT_SEL 7>;
-		};
-		bt_switch_3: hold-tapbtn {
-			compatible = "zmk,behavior-hold-tap";
-			#binding-cells = <2>;
-			flavor = "tap-preferred";
-
-			tapping-term-ms = <DEFAULT_TAPTERM_MS>;
-			quick-tap-ms = <200>;
-			require-prior-idle-ms = <125>;
-			bindings = <&bt BT_SEL 3>, <&bt BT_SEL 8>;
-		};
 		bt_switch_4: long_name3 {
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
@@ -144,7 +125,7 @@
 			tapping-term-ms = <DEFAULT_TAPTERM_MS>;
 			quick-tap-ms = <200>;
 			require-prior-idle-ms = <125>;
-			bindings = <&bt BT_SEL 4>, <&bt BT_CLR>;
+			bindings = <&btp_4>, <&bt_clr>;
 		};
 
 		td_rs: tap_dance_rshift_rctrl {
